@@ -38,6 +38,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtResultado = new javax.swing.JTextField();
         cmdBorrar = new javax.swing.JButton();
+        cmbOperacion = new javax.swing.JComboBox();
+        txtOperaciones = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -45,8 +47,8 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Aharoni", 0, 24)); // NOI18N
-        jLabel1.setText("SUMA DE DOS NÚMEROS");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 20));
+        jLabel1.setText("OPERACIONES CON DOS NÚMEROS");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
         jLabel2.setText("Número 1:");
@@ -68,30 +70,66 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
         jLabel4.setText("Resultado :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, -1));
 
         txtResultado.setEditable(false);
-        getContentPane().add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 80, -1));
+        getContentPane().add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 80, -1));
 
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
+
+        cmbOperacion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suma", "Resta", "Multiplicación", "División" }));
+        getContentPane().add(cmbOperacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, -1, -1));
+
+        txtOperaciones.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
+        txtOperaciones.setText("Operación");
+        getContentPane().add(txtOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
      String num1, num2, res;
-     int n1, n2, suma;
+     double n1, n2, resultado=0;
+     int op;
      
-     num1=txtNumeroUno.getText();
-     num2=txtNumeroDos.getText();
-     n1=Integer.parseInt(num1);
-     n2=Integer.parseInt(num2);
-     suma=n1+n2;
-     res=String.valueOf(suma);
-     txtResultado.setText(res);
+     n1=Double.parseDouble(txtNumeroUno.getText());
+     n2=Double.parseDouble(txtNumeroDos.getText());
+     op=cmbOperacion.getSelectedIndex();
+     
+     switch(op) {
+         case 0:
+             resultado= n1+n2;
+             break;
+         case 1:
+             resultado= n1-n2;
+             break;
+        case 2:
+             resultado= n1*n2;
+             break;  
+        case 3:
+             resultado= n1/n2;
+             break;    
+     }
+     
+    
+     res=String.valueOf(resultado);
+    txtResultado.setText (res); 
      
     }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+     txtNumeroUno.setText("");
+     txtNumeroDos.setText("");
+     txtResultado.setText("");
+     txtNumeroUno.requestFocusInWindow();
+     cmbOperacion.setSelectedIndex(0);
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,6 +167,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbOperacion;
     private javax.swing.JButton cmdBorrar;
     private javax.swing.JButton cmdCalcular;
     private javax.swing.JLabel jLabel1;
@@ -138,6 +177,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtNumeroDos;
     private javax.swing.JTextField txtNumeroUno;
+    private javax.swing.JLabel txtOperaciones;
     private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables
 }
