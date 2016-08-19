@@ -29,21 +29,45 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNumeroUno = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtNumeroDos = new javax.swing.JTextField();
+        cmdCalcular = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtResultado = new javax.swing.JTextField();
+        cmdBorrar = new javax.swing.JButton();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Aharoni", 0, 24)); // NOI18N
+        jLabel1.setText("SUMA DE DOS NÚMEROS");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 20));
+
+        jLabel2.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
+        jLabel2.setText("Número 1:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        getContentPane().add(txtNumeroUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 80, -1));
+
+        jLabel3.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
+        jLabel3.setText("Número 2:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
+        getContentPane().add(txtNumeroDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 70, -1));
+
+        cmdCalcular.setText("Calcular");
+        getContentPane().add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
+        jLabel4.setText("Resultado :");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
+        getContentPane().add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 80, -1));
+
+        cmdBorrar.setText("Borrar");
+        getContentPane().add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -84,6 +108,15 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdBorrar;
+    private javax.swing.JButton cmdCalcular;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtNumeroDos;
+    private javax.swing.JTextField txtNumeroUno;
+    private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables
 }
