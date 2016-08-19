@@ -46,6 +46,8 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(0, 204, 204));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Aharoni", 0, 24)); // NOI18N
@@ -55,11 +57,23 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
         jLabel2.setText("Número 1:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        txtNumeroUno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroUnoKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtNumeroUno, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 80, -1));
 
         jLabel3.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
         jLabel3.setText("Número 2:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, -1));
+
+        txtNumeroDos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroDosKeyTyped(evt);
+            }
+        });
         getContentPane().add(txtNumeroDos, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 70, -1));
 
         cmdCalcular.setText("Calcular");
@@ -72,7 +86,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Aharoni", 1, 14)); // NOI18N
         jLabel4.setText("Resultado :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
 
         txtResultado.setEditable(false);
         getContentPane().add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 80, -1));
@@ -115,6 +129,12 @@ public class Principal extends javax.swing.JFrame {
      n2=Double.parseDouble(txtNumeroDos.getText());
      op=cmbOperacion.getSelectedIndex();
      
+     if(op==3 && n2 == 0){
+      JOptionPane.showMessageDialog(this, "El número dos no puede ser cero","error", JOptionPane.ERROR_MESSAGE);  
+        txtNumeroDos.requestFocusInWindow();
+        txtNumeroDos.selectAll();
+     }   
+     
      switch(op) {
          case 0:
              resultado= n1+n2;
@@ -144,6 +164,27 @@ public class Principal extends javax.swing.JFrame {
      cmbOperacion.setSelectedIndex(0);
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
+    private void txtNumeroUnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroUnoKeyTyped
+                                   
+      char c=evt.getKeyChar(); 
+       
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep();    
+              evt.consume(); 
+          }  
+    }//GEN-LAST:event_txtNumeroUnoKeyTyped
+
+    private void txtNumeroDosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDosKeyTyped
+         char c=evt.getKeyChar(); 
+       
+          if(!Character.isDigit(c)) { 
+              getToolkit().beep();    
+              evt.consume(); 
+          }     
+    }//GEN-LAST:event_txtNumeroDosKeyTyped
+
+  
+             
     /**
      * @param args the command line arguments
      */
